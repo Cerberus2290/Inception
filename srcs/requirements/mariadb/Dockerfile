@@ -19,4 +19,4 @@ RUN bash ./create_user.sh
 
 RUN rm -rf create_user.sh
 
-CMD [ "mysql_safe" ]
+CMD [ "mysqld" ]
