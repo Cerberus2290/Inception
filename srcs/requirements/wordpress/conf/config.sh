@@ -1,4 +1,5 @@
 cd /var/www/wordpress
+wp config create --allow-root
 wp core config --dbhost=$DB_HOST \
                 --dbname=$DB_NAME \
                 --dbuser=$DB_USER \
