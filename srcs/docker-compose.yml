@@ -6,7 +6,7 @@ services:
     build: ./requirements/nginx
     hostname: localhost
     volumes:
-      - wp:/ver/www/html/wordpress
+      - wp:/var/www/html/wordpress
     networks:
       - project
     depends_on:
@@ -31,7 +31,7 @@ services:
     env_file:
       - .env
     volumes:
-      - wp:/var/www/tml/wordpress
+      - wp:/var/www/html/wordpress
     networks:
       - project
     depends_on:
