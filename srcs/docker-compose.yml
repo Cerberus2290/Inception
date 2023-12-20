@@ -6,13 +6,13 @@ services:
     build: ./requirements/nginx
     hostname: localhost
     volumes:
-      - wp:/var/www/html/wordpress
+      - wp:/var/www/wordpress
     networks:
       - project
-    depends_on:
-      - wordpress
     ports:
       - "443:443"
+    depends_on:
+      - wordpress
 
   mariadb:
     container_name: mariadb
@@ -31,7 +31,7 @@ services:
     env_file:
       - .env
     volumes:
-      - wp:/var/www/html/wordpress
+      - wp:/var/www/wordpress
     networks:
       - project
     depends_on:
