@@ -49,7 +49,7 @@ services:
       - "9000:8080"
 
   portainer:
-    image: portainer/portainer-ce:latest
+    image: portainer/portainer-ce:2.19.4
     container_name: portainer
     ports:
       - "8000:8000"
@@ -60,6 +60,28 @@ services:
     security_opt:
       - no-new-privileges:true
     restart: always
+
+  redis:
+    image: redis:7.2.3
+    container_name: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - project
+
+  ftp:
+    image: fauria/vsftpd
+    container_name: ftp
+    env_file:
+      - .env
+    ports:
+      - "0.0.0.0:20:20"
+      - "0.0.0.0:21:21"
+      - "21100-21110:21100-21110"
+    volumes:
+      - wp:/home/vsftpd
+    networks:
+      - project
 
 volumes:
   db:

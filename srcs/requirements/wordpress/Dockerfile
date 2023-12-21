@@ -1,14 +1,18 @@
 FROM debian:buster
 
-EXPOSE 9000
+EXPOSE 9000 \
+        6379
 
 RUN apt-get update && \
     apt-get install -y \
     php7.3-fpm \
     php7.3-mysql \
+    php7.3-redis \
     mariadb-client \
     nano \
-    curl && \
+    curl \
+    unzip \
+    redis-tools && \
     rm -rf /var/lib/apt/lists/*
 
 COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d
@@ -30,5 +34,7 @@ RUN chmod +x /var/www/wordpress/wp-config.php
 
 COPY conf/config.sh /var/www/wordpress/config.sh
 RUN chmod +x /var/www/wordpress/config.sh
+
+RUN mkdir -p /home/vsftpd
 
 ENTRYPOINT [ "bash", "/var/www/wordpress/config.sh" ]

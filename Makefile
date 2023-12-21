@@ -4,8 +4,8 @@ all:		dir
 		@sudo hostsed add 127.0.0.1 tstrassb.42.fr && echo "tstrassb.42.fr added to '/etc/hosts'"
 		sudo docker compose -f ./srcs/docker-compose.yml up -d mariadb portainer adminer
 		@echo "waiting for mariadb to finish setup..."
-		@sleep 10
-		sudo docker compose -f ./srcs/docker-compose.yml up -d wordpress nginx
+		@sleep 5
+		sudo docker compose -f ./srcs/docker-compose.yml up -d wordpress nginx redis ftp
 
 clean:
 		sudo docker compose -f ./srcs/docker-compose.yml down --rmi all -v
@@ -38,3 +38,6 @@ re:		fclean all
 ls:
 		sudo docker image ls
 		sudo docker ps
+
+restart:
+		sudo docker compose -f ./srcs/docker-compose.yml restart portainer
