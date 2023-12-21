@@ -17,8 +17,7 @@ ADD https://wordpress.org/latest.tar.gz /var/www/latest.tar.gz
 
 RUN cd /var/www && \
     tar -xvf latest.tar.gz && \
-    rm -rf latest.tar.gz && \
-    chown www-data:www-data /var/www/wordpress/*
+    rm -rf latest.tar.gz
 
 RUN curl https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar --output /usr/bin/wp --silent
 
@@ -26,7 +25,10 @@ RUN chmod +x ./usr/bin/wp
 
 RUN mkdir /run/php
 
+COPY conf/wp-config.php /var/www/wordpress/wp-config.php
+RUN chmod +x /var/www/wordpress/wp-config.php
+
 COPY conf/config.sh /var/www/wordpress/config.sh
 RUN chmod +x /var/www/wordpress/config.sh
 
-ENTRYPOINT [ "/var/www/wordpress/config.sh" ]
+ENTRYPOINT [ "bash", "/var/www/wordpress/config.sh" ]

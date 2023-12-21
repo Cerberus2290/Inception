@@ -2,7 +2,10 @@ DIR		= /home/root/documents
 
 all:		dir
 		@sudo hostsed add 127.0.0.1 tstrassb.42.fr && echo "tstrassb.42.fr added to '/etc/hosts'"
-		sudo docker compose -f ./srcs/docker-compose.yml up -d
+		sudo docker compose -f ./srcs/docker-compose.yml up -d mariadb portainer adminer
+		@echo "waiting for mariadb to finish setup..."
+		@sleep 10
+		sudo docker compose -f ./srcs/docker-compose.yml up -d wordpress nginx
 
 clean:
 		sudo docker compose -f ./srcs/docker-compose.yml down --rmi all -v
