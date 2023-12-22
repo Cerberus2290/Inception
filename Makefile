@@ -5,7 +5,7 @@ all:		dir
 		sudo docker compose -f ./srcs/docker-compose.yml up -d mariadb portainer adminer
 		@echo "waiting for mariadb to finish setup..."
 		@sleep 5
-		sudo docker compose -f ./srcs/docker-compose.yml up -d wordpress nginx redis ftp
+		sudo docker compose -f ./srcs/docker-compose.yml up -d wordpress nginx redis ftp-docker
 
 clean:
 		sudo docker compose -f ./srcs/docker-compose.yml down --rmi all -v

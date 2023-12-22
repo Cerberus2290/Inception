@@ -68,6 +68,20 @@ services:
       - "6379:6379"
     networks:
       - project
+  
+  ftp-docker:
+    container_name: ftp-docker
+    build: ./bonus/ftp-docker
+    env_file:
+      - .env
+    volumes:
+      - wp:/var/www/wordpress
+    ports:
+      - "20:20"
+      - "21:21"
+      - "40000-40100:40000-40100"
+    networks:
+      - project
 
 volumes:
   db:
