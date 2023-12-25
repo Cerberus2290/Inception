@@ -7,6 +7,10 @@ RUN apt-get update && \
     proftpd-basic \
     openssl
 
+RUN openssl req -x509 -days 365 -nodes -newkey rsa:4096 \
+    -keyout /etc/ssl/private/tstrassb.key \
+    -out /etc/ssl/certs/tstrassb.crt -sha256 -subj "/CN=tstrassb.42.fr"
+
 COPY ./conf/custom.conf /etc/proftpd/conf.d/custom.conf
 RUN chmod +x /etc/proftpd/conf.d/custom.conf
 
