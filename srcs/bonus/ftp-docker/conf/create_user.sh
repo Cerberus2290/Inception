@@ -1,4 +1,4 @@
-adduser ftp-user --disabled-password --gecos "" --shell /bin/false --home /var/www/upload
+adduser ftp-user --disabled-password --gecos "" --shell /bin/bash --home /var/www/upload
 
 sleep 2
 

@@ -4,7 +4,7 @@ services:
   nginx:
     container_name: nginx
     build: ./requirements/nginx
-    hostname: localhost
+    hostname: tstrassb.42.fr
     volumes:
       - wp:/var/www/wordpress
     networks:
@@ -79,9 +79,9 @@ services:
     ports:
       - "20:20"
       - "21:21"
-      - "40000-40100:40000-40100"
+      - "50000-50110:50000-50110"
       - "990:990"
-      - "989-989"
+      - "989:989"
     networks:
       - project
 

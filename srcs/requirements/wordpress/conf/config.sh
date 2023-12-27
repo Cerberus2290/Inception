@@ -6,7 +6,7 @@ wp core install --title=$WP_TITLE \
                 --admin_user=$WP_ADMIN_USER \
                 --admin_password=$WP_ADMIN_PASSWD \
                 --admin_email=$WP_ADMIN_EMAIL \
-                --url=localhost \
+                --url=tstrassb.42.fr \
                 --path='/var/www/wordpress' \
                 --allow-root
 

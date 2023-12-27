@@ -35,6 +35,9 @@ RUN chmod +x /var/www/wordpress/wp-config.php
 COPY conf/config.sh /var/www/wordpress/config.sh
 RUN chmod +x /var/www/wordpress/config.sh
 
-RUN mkdir -p /home/vsftpd
+RUN mkdir -p /var/www/wordpress/bonus
+COPY ./bonus/ /var/www/wordpress/bonus
+
+RUN chmod 777 /var/www/wordpress
 
 ENTRYPOINT [ "bash", "/var/www/wordpress/config.sh" ]
