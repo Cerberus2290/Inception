@@ -27,4 +27,12 @@ wp redis enable --allow-root
 
 chown -R www-data:www-data /var/www/wordpress/
 
+adduser ftp-user --disabled-password --gecos "" --shell /bin/bash --home /var/www/wordpress/upload
+
+sleep 2
+
+echo ftp-user:ftp-passwd | chpasswd
+
+usermod -aG www-data ftp-user
+
 exec php-fpm7.3 -F

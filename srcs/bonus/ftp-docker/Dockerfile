@@ -1,6 +1,6 @@
 FROM debian:buster
 
-EXPOSE 20 21
+EXPOSE 20 21 989 990 50000-50110
 
 RUN apt-get update && \
     apt-get install -y \
