@@ -1,6 +1,6 @@
 #!/bin/bash
 
-adduser $FTP_USER --disabled-password --gecos "" --shell /bin/bash --home /var/www/wordpress/upload
+adduser $FTP_USER --disabled-password --gecos "" --shell /bin/bash --home /var/www/upload
 
 sleep 2
 
