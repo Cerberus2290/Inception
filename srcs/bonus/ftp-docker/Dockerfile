@@ -15,7 +15,6 @@ COPY ./conf/custom.conf /etc/proftpd/conf.d/custom.conf
 RUN chmod +x /etc/proftpd/conf.d/custom.conf
 
 COPY ./conf/create_user.sh /create_user.sh
-RUN chmod +x /create_user.sh && \
-    bash /create_user.sh
+RUN chmod +x /create_user.sh
 
-CMD [ "proftpd", "--nodaemon" ]
+ENTRYPOINT [ "bash", "/create_user.sh" ]

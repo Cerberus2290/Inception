@@ -2,11 +2,19 @@
 
 cd /var/www/wordpress
 
+wp core download --allow-root
+
+wp config create --dbhost=$DB_HOST \
+                 --dbname=$DB_NAME \
+                 --dbuser=$DB_USER \
+                 --dbpass=$DB_PASSWD \
+                 --allow-root
+
 wp core install --title=$WP_TITLE \
                 --admin_user=$WP_ADMIN_USER \
                 --admin_password=$WP_ADMIN_PASSWD \
                 --admin_email=$WP_ADMIN_EMAIL \
-                --url=tstrassb.42.fr \
+                --url=$WP_URL \
                 --path='/var/www/wordpress' \
                 --allow-root
 
@@ -26,13 +34,5 @@ wp plugin install redis-cache --activate --allow-root
 wp redis enable --allow-root
 
 chown -R www-data:www-data /var/www/wordpress/
-
-adduser ftp-user --disabled-password --gecos "" --shell /bin/bash --home /var/www/wordpress/upload
-
-sleep 2
-
-echo ftp-user:ftp-passwd | chpasswd
-
-usermod -aG www-data ftp-user
 
 exec php-fpm7.3 -F

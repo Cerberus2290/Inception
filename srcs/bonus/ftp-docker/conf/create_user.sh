@@ -1,5 +1,9 @@
-adduser ftp-user --disabled-password --gecos "" --shell /bin/bash --home /var/www/wordpress/upload
+#!/bin/bash
+
+adduser $FTP_USER --disabled-password --gecos "" --shell /bin/bash --home /var/www/wordpress/upload
 
 sleep 2
 
-echo ftp-user:ftp-passwd | chpasswd
+echo $FTP_USER:$FTP_PASS | chpasswd
+
+exec proftpd --nodaemon
